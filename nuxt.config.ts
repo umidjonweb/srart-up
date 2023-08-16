@@ -1,11 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // import './assets/css/main.css'
 export default defineNuxtConfig({
-   css: ["vuetify/styles/main.sass", "@mdi/font/css/materialdesignicons.css", "~/assets/main.scss",],
+    postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+   css: ['~/assets/css/main.css'],
    build: {
-    transpile: ['vuetify']
+    transpile: ['@element-plus/nuxt']
    },
-   modules: ["@nuxtjs/google-fonts"],
+   modules: ['@element-plus/nuxt', "@nuxtjs/google-fonts"],
+   elementPlus: { /** Options */ },
    googleFonts:{
     families:{
       Inter: [300,400,500, 600, 700, 800],
