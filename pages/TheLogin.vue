@@ -1,18 +1,19 @@
 <script setup>
-
- const value1 = ref('')
+import { ref } from "vue"
+const value1 = ref("");
 </script>
 <template>
-    <div>
-     <el-date-picker
-        v-model="value1"
-        type="date"
-        placeholder="Pick a day"
-        size="large"
-      />
-        <ElButton type="primary">awdasdasdasdasd</ElButton>
-    </div>
-    <!-- <div class="d-flex justify-center align-center h-screen">
+  <div>
+    <el-date-picker
+      v-model="value1"
+      type="date"
+      placeholder="Pick a day"
+      size="large"
+    />
+    <ElButton type="primary">awdasdasdasdasd</ElButton>
+  </div>
+  <p class="text-2xl text-red-200">dasdasdasd</p>
+  <!-- <div class="d-flex justify-center align-center h-screen">
         <div class="card  d-flex  h-75 border border-gray  rounded-xl">
             <div class="bg-green w-50 h-100 d-flex justify-center align-center">
                 <img class="flex justify-center align-center" src="@/assets/img/logo.svg" alt="">
@@ -32,10 +33,8 @@
         </div>
     </div> -->
 </template>
-<style scoped lang="scss"> 
- .card {
-   width: 780px;
- }
-    
+<style scoped lang="scss">
+.card {
+  width: 780px;
+}
 </style>
-

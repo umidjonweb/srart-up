@@ -13,9 +13,9 @@
     <p class="text-danger">text</p>
 
     <p class="text-danger">text</p>
-
   </div>
 </template>
+
 <style>
 .change-font {
   font-family: "Montserrat", sans-serif;
