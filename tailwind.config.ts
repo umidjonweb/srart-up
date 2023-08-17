@@ -47,7 +47,18 @@ module.exports = {
       "gray-800": "#90A0B7",
     },
     extend: {
-      
+              fontFamily: {
+                "montserrat": ["montserrat-600"],
+                "montserrat-600": ["montserrat-600"],
+                "montserrat-800": ["montserrat-800"],
+                "inter": ["inter-600"],
+                 "inter-400": ["inter-400"],
+                "inter-500": ["inter-500"],
+                "inter-600": ["inter-600"],
+                 "poppins-400": ["poppins-400"],
+                 "poppins-500": ["poppins-500"],
+                 "poppins-600": ["poppins-600"],
+            }
     },
   },
   plugins: [],
