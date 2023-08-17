@@ -10,9 +10,9 @@ const value1 = ref("");
       placeholder="Pick a day"
       size="large"
     />
-    <ElButton type="primary">awdasdasdasdasd</ElButton>
+    <ElButton type="primary">awdasdasdadsdasd</ElButton>
   </div>
-  <p class="text-2xl text-red-200">dasdasdasd</p>
+  <p class="text-2xl text-red-200 font-Inter">dasdasdasd</p>
   <!-- <div class="d-flex justify-center align-center h-screen">
         <div class="card  d-flex  h-75 border border-gray  rounded-xl">
             <div class="bg-green w-50 h-100 d-flex justify-center align-center">

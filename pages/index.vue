@@ -5,7 +5,7 @@
       ddqwsdsad
     </p>
 
-    <p class="text-danger text-h5">text</p>
+    <p class="text-danger text-h5 text-Inter`">text</p>
     <p class="text-danger text-h3">text</p>
 
     <p class="text-danger">text</p>
