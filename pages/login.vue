@@ -1,10 +1,28 @@
-<script setup>
-import { ref } from "vue";
-const value1 = ref("");
+<script lang="ts" setup>
+import type { FormInstance, FormRules } from 'element-plus'
+
+const formRef = ref<FormInstance>()
 const _form = ref({
     login: '',
     password:''
 })
+
+const rules = reactive<FormRules<any>>({
+  login: [{required: true, message: 'Введите логин', trigger: 'blur' }],
+  password: [{required: true, message: 'Введите пароль', trigger: 'blur' }],
+})
+
+const submitForm = () => {
+  if (!formRef.value) return
+  formRef.value.validate((valid) => {
+    if (valid) {
+      console.log('submit!')
+    } else {
+      console.log('error submit!')
+      return false
+    }
+  })
+}
 </script>
 <template>
   <div class="login flex justify-center items-center h-screen">
@@ -19,19 +37,15 @@ const _form = ref({
                    банковских карт и корреспонденцы</p>
                </div>
                <h3 class="text-center font-inter-600 text-xl mt-16 mb-10">Вход в панель администратора</h3>
-             <!-- <div class="input">
-                 <label for="login">Логин</label>
-                 <input class="w-100  border-green" />
-             </div> -->
-              <el-form :model="_form" label-position="top" >
-                <el-form-item label="Логин">
+              <el-form :model="_form" :rules="rules" ref="formRef" label-position="top" >
+                <el-form-item label="Логин" prop="login">
                   <el-input class="border rounded-lg overflow-hidden text-green-800" v-model="_form.login" placeholder="Введите логин"/>
                 </el-form-item>
-                  <el-form-item class="!text-danger" label="Пароль">
-                  <el-input class="border rounded-lg overflow-hidden text-green-800" v-model="_form.password" placeholder="Введите логин"/>
+                  <el-form-item label="Пароль" prop="password">
+                  <el-input class="border rounded-lg overflow-hidden text-green-800" v-model="_form.password" placeholder="Введите пароль"/>
                 </el-form-item>
                 <el-form-item>
-                   <el-button loading class="!h-12 !rounded-lg !w-full !bg-green-800 !text-white mt-3"  @click="onSubmit">Войти</el-button>
+                   <el-button @click="submitForm"  class="!h-12 !rounded-lg !w-full !bg-green-800 !text-white mt-3">Войти</el-button>
                  </el-form-item>
                  <p class="font-inter-400 text-gray text-center">Забыли пароль? <a class="text-green-800 font-inter-400" href="!#"> Восстановить</a></p>
               </el-form>

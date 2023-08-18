@@ -1,11 +1,12 @@
-<script lang="ts" setup>
-
-</script>
 <template>
   <NuxtLayout name="dashbord">
-     
+    <div>Заказы</div>
   </NuxtLayout>
 </template>
+
+<script>
+
+</script>
 
 <style>
 
