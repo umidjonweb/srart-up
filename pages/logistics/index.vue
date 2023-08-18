@@ -1,5 +1,5 @@
 <template>
-    <NuxtLayout name="dashbord">
+    <NuxtLayout>
         <div>logistics</div>
     </NuxtLayout>
 </template>
