@@ -2,15 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .font-Inter{
-    font-family: "Inter";
-}
-.font-Poppins {
-    font-family: "Poppins";
-}
-.font-Montserrat {
-    font-family: "Montserrat";
-} */
+
 @layer  base {
 
     @font-face {
