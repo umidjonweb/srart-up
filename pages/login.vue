@@ -30,6 +30,7 @@ const submitForm = () => {
   <NuxtLayout name="auth" class="login flex justify-center items-center h-screen">
         <div class="">
            <el-button type="primary" >asdasdasd</el-button>
+           <p class="te">salom</p>
         </div>
     </NuxtLayout>
 </template>
