@@ -63,7 +63,7 @@ const submitForm = () => {
               <el-checkbox v-model="checked1" label="Запомнить  логин" size="large" />
               <a href="#" class="text-indigo-light">Забыли пароль?</a>
              </div>
-             <el-button @click="submitForm" native-type="submit" class="w-full !py-8 mt-4 text-xl font-inter-600" type="primary">Войти</el-button>
+             <el-button @click="submitForm" native-type="submit" class="w-full !py-7 mt-4 !text-xl font-inter-600" type="primary">Войти</el-button>
           </el-form>
       </div>
       <div>

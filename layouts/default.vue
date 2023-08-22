@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bg-indigo-700 py-4">
-      <img class="cursor-pointer" src="@/assets/img/logo.svg" alt="">
+      <img @click="$router.push('/login')" class="cursor-pointer" src="@/assets/img/logo.svg" alt="">
     </div>
     <div style="height: calc(100vh - 55px);" class="bg-green-dark flex justify-between">
       <div class="relative">
