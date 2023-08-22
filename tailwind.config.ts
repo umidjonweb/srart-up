@@ -44,16 +44,21 @@ module.exports = {
       gray: "#9DA3BB",
       "gray-800": "#90A0B7",
       "indigo": "#5F66EA",
+      "indigo-700": "#30333D",
       "indigo-light": "#44678F",
       "indigo-bold": "#192A3E",
+      "indigo-500": "#71717A",
       "blue": "#376FFF",
       "blue-200": "#EBF4FF",
+      "blue-100": "#F0F6FF",
       "brown": "#CA8A04"
     },
     extend: {
               fontFamily: {
                 "montserrat": ["montserrat-600"],
-                "montserrat-600": ["montserrat-600"],
+                 "montserrat-500": ["montserrat-500"],
+                 "montserrat-600": ["montserrat-600"],
+                 "montserrat-700": ["montserrat-700"],
                 "montserrat-800": ["montserrat-800"],
                 "inter": ["inter-600"],
                  "inter-400": ["inter-400"],

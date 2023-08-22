@@ -33,18 +33,35 @@
         src: url('/assets/font/Inter-Medium.ttf') format('truetype');
     }
     @font-face {
-        font-family: 'montserrat-600';
-        src: url('/assets/font/Montserrat-SemiBold.ttf') format('truetype');
+        font-family: 'montserrat-500';
+        src: url('/assets/font/Montserrat-Medium.ttf') format('truetype');
     }
     @font-face {
-        font-family: 'montserrat-800';
-        src: url('/assets/font/Montserrat-ExtraBold.ttf') format('truetype');
+          font-family: 'montserrat-600';
+          src: url('/assets/font/Montserrat-SemiBold.ttf') format('truetype');
+      }
+    @font-face {
+        font-family: 'montserrat-700';
+        src: url('/assets/font/Montserrat-Bold.ttf') format('truetype');
     }
+     @font-face {
+         font-family: 'montserrat-800';
+         src: url('/assets/font/Montserrat-ExtraBold.ttf') format('truetype');
+     }
+    
 }
 .el-form--label-top .el-form-item .el-form-item__label{
     margin-bottom: 3px !important;
 }
 .el-input{
-    height: 42px;
+    height: 36px;
+}
+.el-input__wrapper:hover, .el-input__wrapper.is-focus {
+     box-shadow: 0 0 0 1px gray inset !important; 
+}
+a{
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }
 
