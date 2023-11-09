@@ -28,8 +28,8 @@ function setImageUri(image_name: string) {
 
 </script>
 <template>
-    <div class="sidebar w-[250px] h-full bg-white p-6 border-r border-r-black/10"> 
-        <div v-for="link, ind in _links" :key="ind">    
+    <div class="sidebar h-full bg-white p-6 border-r border-r-black/10"> 
+        <div class="item" v-for="link, ind in _links" :key="ind">    
             <NuxtLink :to="link.to" :class="$route.path.includes(link.activeClass) ? 'router-link-active bg-primary-300' : ''" class="flex gap-3 items-center p-4 mt-1 rounded-xl">
                 <!-- <component class="w-4 h-4" :is="link.img"></component> -->
                 <img :src="setImageUri(link.img)" alt="">
@@ -39,7 +39,9 @@ function setImageUri(image_name: string) {
     </div>
 </template>
 <style lang="scss">
- .sidebar {   
-
+  .w-12 {   
+   .item{
+      display: none;
+   }
  }
 </style>

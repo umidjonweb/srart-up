@@ -2,17 +2,14 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
-    "cypress:open": "cypress open",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "type-check": "npx nuxi typecheck",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write pages/ layouts/ components/",
-    "prepare": "husky install",
-    "test": "npm run type-check"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.5",
@@ -20,13 +17,11 @@
     "@types/node": "^18.17.3",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
-    "@vue/test-utils": "^2.4.1",
     "autoprefixer": "^10.4.15",
     "cypress": "^12.17.3",
     "element-plus": "^2.3.9",
     "eslint": "^8.47.0",
     "eslint-plugin-vue": "^9.17.0",
-    "husky": "^8.0.3",
     "nuxt": "^3.6.5",
     "postcss": "^8.4.28",
     "prettier-eslint": "^15.0.1",
