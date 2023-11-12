@@ -40,6 +40,7 @@ module.exports = {
       "black-400": "#455A64 ",
 
       success: "#34B87C",
+      "succes-200": "#FFFEF6",
       white: "#ffffff",
       gray: "#9DA3BB",
       "gray-800": "#90A0B7",

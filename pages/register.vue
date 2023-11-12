@@ -4,6 +4,8 @@ import type { FormInstance, FormRules } from 'element-plus'
 const router = useRouter()
 const formRef = ref<FormInstance>()
 const _form = ref({
+    last_name: '',
+    first_name: '',
     phone: '',
     password:''
 })
@@ -36,11 +38,26 @@ const submitForm = () => {
           <div class="flex justify-between items-center my-6">
             <div class="h-[2px] grow bg-indigo-500"></div>
             <p class="text text-center font-montserrat-500 text-[15px] px-6 text-indigo-500">
-              Kirish
+              Ro'yxatdan o'tish
             </p>
             <div class="h-[2px] grow  bg-indigo-500"></div>
           </div>
           <el-form label-position="top" @submit.prevent="submitForm" :model="_form" :rules="rules" ref="formRef">
+             <el-form-item class="my-4" label="Ism">
+                <el-input
+                  v-model="_form.first_name"
+                  type="text"
+                  placeholder="Ism"
+               />
+             </el-form-item>
+           
+              <el-form-item class="mt-4" label="Familiya">
+                <el-input
+                  v-model="_form.last_name"
+                  type="text"
+                  placeholder="Familiya"
+               />
+             </el-form-item>
             <el-form-item class="mt-4" label="Telefon nomer">
                 <el-input
                   v-model="_form.phone"
@@ -57,15 +74,16 @@ const submitForm = () => {
                />
              </el-form-item>
              <div class="flex justify-between items-center -mt-2">
-              <a href="#" class="text-indigo-light">Parol esingizdami? </a>
+              <p>Ro'yxatdan o'tganmisiz?</p>
+              <a href="#" class="text-indigo-light">Kirish</a>
              </div>
-             <el-button @click="submitForm" native-type="submit" class="w-full !py-4 mt-4 font-inter-600" type="primary">Kirish</el-button>
+             <el-button @click="submitForm" native-type="submit" class="w-full !py-4 mt-4  font-inter-600" type="primary">Kirish</el-button>
           </el-form>
       </div>
     </div>
     </NuxtLayout>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .email {
  .el-input{
     height: 36px;
@@ -77,27 +95,5 @@ const submitForm = () => {
 .el-input__inner::placeholder {
    color: #D3D4EC;
 }
-// .el-input__wrapper {
-//   border-radius: 10px !important;
-//   padding: 1px 45px;
-//   padding-right: 18px;
-// }
-// .el-checkbox__inner{
-//   width: 20px !important;
-//   height: 20px !important;
-//   &::after{
-//     height: 10px !important;
-//     left: 6px;
-//     top: 2px;
-//     width: 4px;
-//     border-right: 2px solid;
-//     border-bottom: 2px solid;
-//   }
-// }
-//  .el-checkbox__label {
-//   font-size: 16px !important;
-//   font-weight: 400 !important;
-//   font-family: 'Montserrat';
-//  }
 }
 </style>
