@@ -8,8 +8,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write pages/ layouts/ components/",
-    "prepare": "husky install"
+    "format": "prettier --write pages/ layouts/ components/"
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.5",
@@ -18,7 +17,6 @@
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "autoprefixer": "^10.4.15",
-    "cypress": "^12.17.3",
     "element-plus": "^2.3.9",
     "eslint": "^8.47.0",
     "eslint-plugin-vue": "^9.17.0",

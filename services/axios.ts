@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus'
 // import router from '../'
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://217.18.63.130:8000/api/',
+  baseURL: 'http://217.18.63.130:8008/api/auth/v1/',
   timeout: 20000,
   headers: {
     Accept: 'application/json',
