@@ -35,6 +35,7 @@
     "axios": "^1.4.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-typescript": "^3.0.0",
+    "maska": "^2.1.10",
     "sass": "^1.65.1",
     "vuetify": "^3.3.12"
   }

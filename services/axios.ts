@@ -1,10 +1,10 @@
 import axios from 'axios'
-// import { _loginStore } from '@/services/auth'
+import { _loginStore } from '@/services/login'
 import { ElMessage } from 'element-plus'
 // import router from '../'
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://217.18.63.130:8008/api/auth/v1/',
+  baseURL: 'http://217.18.63.130:8008/api/oqibat/v1',
   timeout: 20000,
   headers: {
     Accept: 'application/json',
@@ -40,14 +40,14 @@ export function getResponse_DEFAULT() {
 
 axiosInstance.interceptors.request.use(
   (config: any) => {
-    // const {token}  = JSON.parse(localStorage.getItem('login')) || {}
-    // const token = _loginStore.value?.token    
-    if (config.url === '/auth/v1/public/signIn' || config.url === '/auth/v1/public/=signUp') {
+      const token = _loginStore.value?.token  
+      console.log('config.url ', config.url )
+    if (config.url === '/auths/login' || config.url === '/auths/register' || config.url === '/auths/verify') {
         return config
     }
-    // if (token) {
-    //   config.headers.authorization = `Bearer ${token}`
-    // } 
+    if (token) {
+      config.headers.authorization = `Bearer ${token}`
+    } 
     else {
     //   setTimeout(() => {
     //     location.reload()

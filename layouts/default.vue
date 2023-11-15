@@ -2,30 +2,22 @@
 const _isVisible = ref(true)
 </script>
 <template>
-  <div>
-    <div class="flex justify-between items-center px-4 bg-indigo-700 py-4">
-      <img @click="$router.push('/login')" class="cursor-pointer" src="@/assets/img/logo.svg" alt="">
-      <div class="flex gap-4 items-center">
-        <img src="@/assets/img/person.png" alt="">
-        <div>
-          <p class="text-gray-200 font-inter-400">Sulaymanov K.SH.</p>
-          <p class="text-gray-200 font-inter-400">Admin</p>
-        </div>
-        <img src="@/assets/img/logout.svg" alt="">
-      </div>
-    </div>
-    <div style="height: calc(100vh - 55px);" class="bg-green-dark flex justify-between">
-      <div class="relative">
+   <div>
+
+      <div style="height: calc(100vh - 55px);" class="bg-green-dark flex justify-between">
+         <!-- <div class="relative">
         <div @click="_isVisible = !_isVisible" class="w-7 h-7 flex justify-center items-center rounded-lg border border-gray/20 cursor-pointer absolute -right-[14px] top-9  bg-white">
           <img  :class="!_isVisible ? 'rotate-180 cursor-pointer' :'cursor-pointer'" src="@/assets/img/arrow.svg" alt="">
         </div>
         <SidebarSalom class="transition-all" :class="_isVisible ? 'w-[250px]' : 'w-12' "/>
+      </div> -->
+         <div class="rounded-2xl grow bg-indigo-200 h-full p-4">
+            <slot />
+         </div>
+         <div class="fixed bottom-0 w-full">
+            <Sidebar />
+         </div>
       </div>
-      <div class="rounded-2xl grow bg-indigo-200 h-full p-4">
-        <slot />
-      </div>
-    </div>
-  </div>
+   </div>
 </template>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

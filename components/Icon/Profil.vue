@@ -1,0 +1,17 @@
+<template>
+   <div>
+      <svg width="35" height="36" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path
+            d="M12.75 11.75C12.75 15.4715 15.7785 18.5 19.5 18.5C23.2215 18.5 26.25 15.4715 26.25 11.75C26.25 8.0285 23.2215 5 19.5 5C15.7785 5 12.75 8.0285 12.75 11.75ZM31.5 33.5H33V32C33 26.2115 28.2885 21.5 22.5 21.5H16.5C10.71 21.5 6 26.2115 6 32V33.5H31.5Z"
+            fill="#BBBBBB" />
+      </svg>
+
+   </div>
+</template>
+<style scoped lang="scss">
+.router-link-active {
+   svg path {
+      fill: #00A2B7 !important;
+   }
+}
+</style>

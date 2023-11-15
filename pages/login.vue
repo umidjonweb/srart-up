@@ -1,27 +1,26 @@
 <script lang="ts" setup>
 import type { FormInstance, FormRules } from 'element-plus'
-import { login_API } from "@/services/login"
+import { login_API, _loginStore } from "@/services/login"
 const router = useRouter()
 const formRef = ref<FormInstance>()
 const _form = ref({
-   phone: '',
+   username: '',
    password: ''
 })
-const checked1 = ref(false)
 
 const rules = reactive<FormRules<any>>({
-   email: [{ required: true, message: "Maydonni to'ldiring", trigger: 'blur' }],
+   username: [{ required: true, message: "Maydonni to'ldiring", trigger: 'blur' }],
    password: [{ required: true, message: "Maydonni to'ldiring", trigger: 'blur' }],
 })
 
 const submitForm = () => {
    if (!formRef.value) return
-   formRef.value.validate((valid) => {
+   formRef.value.validate(async(valid) => {
       if (valid) {
-         console.log('submit!')
          const [res, err] = await login_API(_form.value)
          if (err) return
-         ElMessage.success("Ro'yxatdan o'tdingiz")
+         ElMessage.success("Ro'yxatdan o'tdingiz!!!")
+         _loginStore.value = res
          router.push('/dashbords')
       } else {
          console.log('error submit!')
@@ -34,26 +33,26 @@ const submitForm = () => {
    <NuxtLayout name="auth" class="email">
       <div class="w-full max-w-[370px]">
          <div class="p-8 rounded-3xl">
-            <img class="mb-4 mx-auto" src="@/assets/img/logo-green.svg" alt="">
+            <img class="mb-4 mx-auto" src="@/assets/img/logoo.svg" alt="">
 
             <div class="flex justify-between items-center my-6">
                <div class="h-[2px] grow bg-indigo-500"></div>
-               <p class="text text-center font-montserrat-500 text-[15px] px-6 text-indigo-500">
+               <p class="text text-center font-montserrat-500 text-2xl px-6">
                   Kirish
                </p>
                <div class="h-[2px] grow  bg-indigo-500"></div>
             </div>
             <el-form label-position="top" @submit.prevent="submitForm" :model="_form" :rules="rules" ref="formRef">
-               <el-form-item class="mt-4" label="Telefon nomer">
-                  <el-input v-model="_form.phone" type="text" placeholder="Telefon nomer" />
+               <el-form-item prop="username" label="Telefon nomer">
+                  <el-input v-model="_form.username" type="text" placeholder="998 XX XXX XX XX" />
                </el-form-item>
-               <el-form-item class="mt-4" label="password">
+               <el-form-item prop="password" label="password">
                   <el-input show-password v-model="_form.password" type="password" placeholder="Password" />
                </el-form-item>
                <div class="flex justify-between items-center -mt-2">
-                  <a href="#" class="text-indigo-light">Parol esingizdami? </a>
+                  <a href="#" class="text-indigo-light block text-right w-full text-xs underline">Parolni unutdingizmi? </a>
                </div>
-               <el-button @click="submitForm" native-type="submit" class="w-full !py-4 mt-4 font-inter-600"
+               <el-button native-type="submit" class="w-full !py-4 mt-4 font-inter-600"
                   type="primary">Kirish</el-button>
             </el-form>
          </div>
@@ -61,6 +60,9 @@ const submitForm = () => {
    </NuxtLayout>
 </template>
 <style lang="scss">
+.el-form-item{
+   margin-bottom: 10px!important;
+}
 .email {
    .el-input {
       height: 36px;

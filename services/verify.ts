@@ -1,13 +1,11 @@
 import { AxiosResponse, BaseResponse, axiosInstance } from './axios'
-import { useStorage } from '@vueuse/core';
-export const _loginStore = useStorage('login', {})
 
-export async function login_API(data): Promise<[BaseResponse<any>, null] | [null, Error]> {
+export async function verifyCode_API(data): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       console.log(data);
       
       const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.post('/auths/login', data )
+         await axiosInstance.post('/auths/verify', data )
       )
 
       return [response.data, null]
