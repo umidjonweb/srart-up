@@ -24,7 +24,7 @@ const _links =
          "to": "/profil",
          "title": "Profil",
          "img": resolveComponent("IconProfil"),
-         "activeClass": "liveMaps"
+         "activeClass": "profil"
       }
    ])
 

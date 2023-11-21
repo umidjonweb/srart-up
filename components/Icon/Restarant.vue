@@ -10,7 +10,7 @@
 <style scoped lang="scss">
 .router-link-active {
    svg path {
-      fill: #025256 !important;
+      fill: #00A2B7 !important;
    }
 }
 </style>

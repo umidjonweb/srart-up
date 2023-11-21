@@ -11,7 +11,7 @@
 <style scoped lang="scss">
 .router-link-active {
    svg path {
-      stroke: #00A2B7 !important;
+      fill: #00A2B7 !important;
    }
 }
 </style>

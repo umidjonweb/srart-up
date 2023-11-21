@@ -19,7 +19,7 @@ const submitForm = () => {
       if (valid) {
          const [res, err] = await login_API(_form.value)
          if (err) return
-         ElMessage.success("Ro'yxatdan o'tdingiz!!!")
+         ElMessage.success("Muvofaqiyatli kirdingiz!!!")
          _loginStore.value = res
          router.push('/dashbords')
       } else {

@@ -26,10 +26,14 @@ const submitForm = () => {
    formRef.value.validate(async (valid) => {
       if (valid) {
          console.log('submit!')
-         const [res, err] = await register_API(_form.value)
-         if (err) return
+         const [res, error] = await register_API(_form.value)
+         if (error) {
+            console.log('error: ' + error);
+            ElMessage.error(error.message)
+            return
+         }
          ElMessage.success("Tasdiqlash kodi yuborildi")
-         _registerStore.value = {..._form.value}
+         _registerStore.value = { ..._form.value }
          router.push('/verify')
       } else {
          console.log('error submit!')
@@ -52,25 +56,25 @@ const submitForm = () => {
                <div class="h-[2px] grow  bg-indigo-500"></div>
             </div>
             <el-form label-position="top" @submit.prevent="submitForm" :model="_form" :rules="rules" ref="formRef">
-               <el-form-item  prop="username" label="username">
+               <el-form-item prop="username" label="username">
                   <el-input v-model="_form.username" type="text" placeholder="username" />
                </el-form-item>
-               <el-form-item  label="Ism">
+               <el-form-item label="Ism">
                   <el-input v-model="_form.firstname" type="text" placeholder="Ism" />
                </el-form-item>
 
-               <el-form-item  label="Familiya">
+               <el-form-item label="Familiya">
                   <el-input v-model="_form.lastname" type="text" placeholder="Familiya" />
                </el-form-item>
-               <el-form-item  label="password">
+               <el-form-item label="password">
                   <el-input show-password v-model="_form.password" type="password" placeholder="Password" />
                </el-form-item>
                <div class="flex justify-between items-center mt-2">
                   <p>Ro'yxatdan o'tganmisiz?</p>
                   <a href="#" class="text-indigo-light underline">Kirish</a>
                </div>
-               <el-button  native-type="submit" class="w-full !py-4 mt-4  font-inter-600"
-                  type="primary">Ro'yxatdan o'tish</el-button>
+               <el-button native-type="submit" class="w-full !py-4 mt-4  font-inter-600" type="primary">Ro'yxatdan
+                  o'tish</el-button>
             </el-form>
          </div>
       </div>

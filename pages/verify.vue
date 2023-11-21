@@ -2,17 +2,12 @@
 import type { FormInstance } from 'element-plus'
 import { verifyCode_API } from '@/services/verify'
 import { _registerStore } from "@/services/register"
-
-// import { _rules } from './rules'
-const _fileModalRef = ref()
+import { _loginStore } from '@/services/login';
 const router = useRouter()
 
 const _formRef = ref<FormInstance>()
-
 const _isSMS = ref(true)
-
 const _time = ref(0)
-
 const _item = ref({
    username: _registerStore.value.username,
    code: ''
@@ -30,11 +25,15 @@ function timeSMS() {
 async function sendSMS() {
    _formRef.value?.validate(async (valid) => {
       if (valid) {
-         const [error] = await verifyCode_API(_item.value)
-         if (error) return
-         timeSMS()
+         const [res, error] = await verifyCode_API(_item.value)
+         if (error) {
+            ElMessage.error(error.message)
+            return
+         }
+         console.log('qweqwe', res);
+         _loginStore.value = res
          _isSMS.value = false
-         router.push('/login')
+         router.push('/')
       }
    })
 }
