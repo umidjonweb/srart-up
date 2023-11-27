@@ -3,7 +3,7 @@
 const _links =
    ref([
       {
-         "to": "/",
+         "to": "/home/family",
          "title": "Asosiy",
          "img": resolveComponent("IconHome"),
          "activeClass": "home"
@@ -15,9 +15,15 @@ const _links =
          "activeClass": "restarants"
       },
       {
+         "to": "/like",
+         "title": "Tanlanganlar",
+         "img": resolveComponent("IconLike"),
+         "activeClass": "like"
+      },
+      {
          "to": "/foods",
          "title": "Ovqatlar",
-         "img": resolveComponent("IconLike"),
+         "img": resolveComponent("IconFood"),
          "activeClass": "foods"
       },
       {
@@ -31,13 +37,13 @@ const _links =
 
 </script>
 <template>
-   <div class="sidebar bg-white h-[70px] border-r border-r-black/10 w-full grid grid-cols-4">
+   <div class="sidebar bg-white h-[70px] border-r border-r-black/10 w-full flex justify-between px-3">
       <div class="h-full" v-for="link, ind in _links" :key="ind">
          <NuxtLink :to="link.to" :class="$route.path.includes(link.activeClass) ? 'router-link-active' : ''"
             class="block h-full">
             <div class="flex justify-center items-center flex-col h-full">
                <component  :is="link.img"></component>
-               <p class="font-montserrat-600 text-sm text-[#B8B8D2]">{{ link.title }}</p>
+               <p class="font-inter-500 text-sm text-[#B8B8D2]">{{ link.title }}</p>
             </div>
          </NuxtLink>
       </div>

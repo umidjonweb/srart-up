@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import { Delete, Download, Plus, ZoomIn } from '@element-plus/icons-vue'
 import { uploadFile_API } from "@/services/file"
-
+import { _loginStore } from '@/services/login'
 import type { UploadFile } from 'element-plus'
-import { searchFood_API, getFood_API, addFood_API } from "@/services/food"
+import { addFood_API, addAdminFood_API } from "@/services/food"
 
 const router = useRouter()
 const _item = ref<any>({
@@ -55,13 +55,24 @@ async function addFood() {
    //    }
    // })
 }
+async function addAdminFood() {
+   const [res, err] = await addAdminFood_API(_item.value)
+   console.log(res);
+
+   if (err) return
+   ElMessage.success("Ovqat qo'shildi")
+   router.push('/foods')
+}
 
 </script>
 
 <template>
    <NuxtLayout>
       <div class="max-w-[370px] w-full mx-auto">
-         <h1 class="text-2xl mb-4">Ovqat qo'shish</h1>
+         <div class="flex gap-2 items-center mb-3">
+            <img @click="$router.push('/foods')" class="w-6 h-5" src="@/assets/img/left.svg" alt="">
+            <h1 class="text-xl">Ovqat qo'shish</h1>
+         </div>
          <el-form label-position="top">
             <el-form-item size="small" label="Nomi">
                <el-input v-model="_item.name" />
@@ -99,9 +110,9 @@ async function addFood() {
                   <img w-full :src="dialogImageUrl" alt="Preview Image" />
                </el-dialog>
             </div>
-
             <el-form-item>
-               <el-button type="primary" @click="addFood" class="w-full mt-6">Ovqat qo'shish</el-button>
+               <el-button type="primary" @click="!_loginStore.role?.includes('ADMIN') ? addFood() : addAdminFood()"
+                  class="w-full mt-6">Ovqat qo'shish</el-button>
             </el-form-item>
          </el-form>
       </div>

@@ -5,7 +5,7 @@ export async function searchContact_API(number: string): Promise<[BaseResponse<a
       const response = <AxiosResponse<BaseResponse<any>>>(
          await axiosInstance.get('/contacts/search', {
             params: {
-               number
+               number: number?.replaceAll(" ", "")
             }
          }))
       return [response.data, null]
@@ -28,7 +28,7 @@ export async function myContact_API(data: any): Promise<[BaseResponse<any>, null
       const response = <AxiosResponse<BaseResponse<any>>>(
          await axiosInstance.get('/contacts/me', {
             params: {
-               data
+               ...data
             }
          }))
 

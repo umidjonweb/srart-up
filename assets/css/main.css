@@ -3,65 +3,86 @@
 @tailwind utilities;
 
 
-@layer  base {
+@layer base {
 
-    @font-face {
-        font-family: 'poppins-600';
-        font-weight: 600;
-        src: local('Poppins');
-    }
-    
-    @font-face {
-        font-family: 'poppins-500';
-        src: url('/assets/font/Poppins-Regular.ttf') format('truetype');
-    }
-    
-    @font-face {
-        font-family: 'poppins-400';
-        src: url('/assets/font/Poppins-Medium.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'inter-400';
-        src: url('/assets/font/Inter-Light.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'inter-500';
-        src: url('/assets/font/Inter-Regular.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'inter-600';
-        src: url('/assets/font/Inter-Medium.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'montserrat-500';
-        src: url('/assets/font/Montserrat-Medium.ttf') format('truetype');
-    }
-    @font-face {
-          font-family: 'montserrat-600';
-          src: url('/assets/font/Montserrat-SemiBold.ttf') format('truetype');
-      }
-    @font-face {
-        font-family: 'montserrat-700';
-        src: url('/assets/font/Montserrat-Bold.ttf') format('truetype');
-    }
-     @font-face {
-         font-family: 'montserrat-800';
-         src: url('/assets/font/Montserrat-ExtraBold.ttf') format('truetype');
-     }
-    
-}
-.el-form--label-top .el-form-item .el-form-item__label{
-    margin-bottom: 3px !important;
-}
-.el-input{
-    height: 36px;
-}
-.el-input__wrapper:hover, .el-input__wrapper.is-focus {
-     box-shadow: 0 0 0 1px gray inset !important; 
-}
-a{
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
+   @font-face {
+      font-family: 'poppins-600';
+      font-weight: 600;
+      src: local('Poppins');
+   }
+
+   @font-face {
+      font-family: 'poppins-500';
+      src: url('/assets/font/Poppins-Regular.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'poppins-400';
+      src: url('/assets/font/Poppins-Medium.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'inter-400';
+      src: url('/assets/font/Inter-Light.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'inter-500';
+      src: url('/assets/font/Inter-Regular.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'inter-600';
+      src: url('/assets/font/Inter-Medium.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'montserrat-500';
+      src: url('/assets/font/Montserrat-Medium.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'montserrat-600';
+      src: url('/assets/font/Montserrat-SemiBold.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'montserrat-700';
+      src: url('/assets/font/Montserrat-Bold.ttf') format('truetype');
+   }
+
+   @font-face {
+      font-family: 'montserrat-800';
+      src: url('/assets/font/Montserrat-ExtraBold.ttf') format('truetype');
+   }
+
 }
 
+.el-form--label-top .el-form-item .el-form-item__label {
+   margin-bottom: 3px !important;
+}
+
+.el-input {
+   height: 36px;
+}
+
+.el-input__wrapper:hover,
+.el-input__wrapper.is-focus {
+   box-shadow: 0 0 0 1px gray inset !important;
+}
+
+a {
+   text-decoration: none;
+   display: inline-block;
+   cursor: pointer;
+}
+
+p,
+a, span
+{
+font-family: 'inter-400';
+}
+h1, h2, h3, h4, h5, h6{
+font-family: 'inter-500';
+
+}

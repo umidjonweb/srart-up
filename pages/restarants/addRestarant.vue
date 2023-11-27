@@ -4,7 +4,6 @@ import { getFood_API } from "@/services/food"
 import { ref } from 'vue'
 import { Delete, Download, Plus, ZoomIn } from '@element-plus/icons-vue'
 import { uploadFile_API } from "@/services/file"
-
 import type { UploadFile } from 'element-plus'
 const router = useRouter()
 
@@ -17,8 +16,14 @@ const _item = ref({
    images: [],
    foodIds: []
 })
-async function getFood() {
-   const [res, err] = await getFood_API(_item.value)
+const route = useRoute()
+
+const queryData = ref<any>({
+   page: Number(route.query?.currentPage) || 0,
+   size: 30,
+})
+async function getFood(item: string = 'VERIFIED') {
+   const [res, err] = await getFood_API(queryData.value, item)
    console.log(res);
    if (err) return
    _optionsFood.value = Array.from({ length: res.content?.length || 0 }).map((_, idx) => ({
@@ -32,6 +37,8 @@ async function addRestorant() {
    // if (!formRef.value) return
    // formRef.value.validate(async (valid) => {
    // if (valid) {
+   _item.value.phoneNumber = _item.value.phoneNumber?.replaceAll(" ", "")
+
    const [res, err] = await addRestorant_API(_item.value)
    console.log(res);
 
@@ -70,22 +77,26 @@ async function handleFile(file: UploadFile) {
 <template>
    <NuxtLayout>
       <div class="restarant max-w-[370px] p-2 pb-2 w-full mx-auto">
-         <h1 class="text-2xl mb-4">Restarant qo'shish</h1>
+         <div class="flex gap-2 items-center mb-2">
+            <img @click="$router.push('/restarants')" class="w-6 h-5" src="@/assets/img/left.svg" alt="">
+            <h1 class="text-xl">Restarant qo'shish</h1>
+         </div>
          <el-form label-position="top">
             <el-form-item size="small" label="Nomi">
                <el-input v-model="_item.name" />
             </el-form-item>
             <el-form-item size="small" label="Telefon nomer">
-               <el-input v-model="_item.phoneNumber" />
+               <el-input v-model="_item.phoneNumber" v-maska data-maska="998 ## ### ## ##"
+                  placeholder="998 ## ### ## ##" />
             </el-form-item>
             <el-form-item size="small" label="Address">
                <el-input v-model="_item.address" />
             </el-form-item>
-            <el-form-item size="small" label="Location">
+            <!-- <el-form-item size="small" label="Location">
                <el-input v-model="_item.location" />
-            </el-form-item>
+            </el-form-item> -->
             <el-form-item class="w-full" label="Ovqatlar">
-               <el-select-v2 class="w-full" v-model="_item.foodIds" :options="_optionsFood" placeholder="Please select"
+               <el-select-v2 class="w-full" v-model="_item.foodIds" :options="_optionsFood" placeholder="Ovqatni tanlang"
                   multiple />
             </el-form-item>
             <div>
@@ -122,7 +133,7 @@ async function handleFile(file: UploadFile) {
                </el-dialog>
             </div>
             <el-form-item>
-               <el-button type="primary" @click="addRestorant" class="w-full mt-6">Restarant qo'shish</el-button>
+               <el-button type="primary" @click="addRestorant" class="w-full mt-6 mb-2">Restarant qo'shish</el-button>
             </el-form-item>
          </el-form>
       </div>

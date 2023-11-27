@@ -11,33 +11,44 @@ const _search = ref<string>('')
          <img src="@/assets/img/message.svg" />
       </div>
       <div class="grid grid-cols-4 my-4">
-         <div class="flex flex-col justify-center items-center">
+         <router-link to="/home/family" class="flex flex-col justify-center items-center">
             <div class="flex justify-center items-center w-[60px] h-[60px] rounded-full bg-white">
                <img src="@/assets/img/family.svg" alt="">
             </div>
-            <p class="text-sm">Oila</p>
-         </div>
-         <div class="flex flex-col justify-center items-center">
+            <p class="font-inter-500 text-sm">Oila</p>
+         </router-link>
+         <router-link to="/home/friends" class="flex flex-col justify-center items-center">
             <div class="flex justify-center items-center w-[60px] h-[60px] rounded-full bg-white">
                <img src="@/assets/img/friend.svg" alt="">
             </div>
-            <p class="text-sm">Do'stlar</p>
-         </div>
-         <div class="flex flex-col justify-center items-center">
+            <p class="font-inter-500 text-sm">Do'stlar</p>
+         </router-link>
+         <router-link to="/home/jobs" class="flex flex-col justify-center items-center">
             <div class="flex justify-center items-center w-[60px] h-[60px] rounded-full bg-white">
                <img src="@/assets/img/friend.svg" alt="">
             </div>
-            <p class="text-sm">Hamkasblar</p>
-         </div>
-         <div class="flex flex-col justify-center items-center">
+            <p class="font-inter-500 text-sm">Hamkasblar</p>
+         </router-link>
+         <router-link to="/home/other" class="flex flex-col justify-center items-center">
             <div class="flex justify-center items-center w-[60px] h-[60px] rounded-full bg-white">
                <img src="@/assets/img/family.svg" alt="">
             </div>
-            <p class="text-sm">Boshqalar</p>
-         </div>
-
+            <p class="font-inter-500 text-sm">Boshqalar</p>
+         </router-link>
+      </div>
+      <div>
+         <slot />
       </div>
    </NuxtLayout>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+.router-link-active {
+   div {
+      border: 1px solid #00A2B7;
+   }
+   p{
+      color: #00A2B7;
+   }
+}
+</style>

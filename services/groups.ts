@@ -1,11 +1,12 @@
 import { AxiosResponse, BaseResponse, axiosInstance } from './axios'
 
-export async function searchFood_API(name: string): Promise<[BaseResponse<any>, null] | [null, Error]> {
+
+export async function getGroup_API(data: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.get('/foods/autocomplete', {
+         await axiosInstance.get('/groups', {
             params: {
-               name
+               ...data
             }
          }))
       return [response.data, null]
@@ -13,13 +14,25 @@ export async function searchFood_API(name: string): Promise<[BaseResponse<any>, 
       return [null, error as Error]
    }
 }
-export async function getFood_API(data: any, item: string): Promise<[BaseResponse<any>, null] | [null, Error]> {
+export async function getGroupOffer_API(data: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.get('/foods', {
+         await axiosInstance.get('/groups/offer', {
+            params: {
+               ...data
+            }
+         }))
+      return [response.data, null]
+   } catch (error) {
+      return [null, error as Error]
+   }
+}
+export async function getMembersGroup_API(data: any, id: string): Promise<[BaseResponse<any>, null] | [null, Error]> {
+   try {
+      const response = <AxiosResponse<BaseResponse<any>>>(
+         await axiosInstance.get(`/groups/${id}/members`, {
             params: {
                ...data,
-               status: item
             }
          }))
       return [response.data, null]
@@ -27,53 +40,37 @@ export async function getFood_API(data: any, item: string): Promise<[BaseRespons
       return [null, error as Error]
    }
 }
-export async function getAdminFood_API(data: any, item: string): Promise<[BaseResponse<any>, null] | [null, Error]> {
+export async function inviteGroup_API(userId: any, id: string): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.get('/admins/food', {
-            params: {
-               ...data,
-               status: item
-            }
-         }))
+         await axiosInstance.post(`/groups/${id}/invite?userId=${userId}`))
       return [response.data, null]
    } catch (error) {
       return [null, error as Error]
    }
 }
-export async function singleFood_API(id: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
+export async function declineGroup_API(id: string): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.get('/foods/' + id,))
+         await axiosInstance.put(`/groups/${id}/decline`))
       return [response.data, null]
    } catch (error) {
       return [null, error as Error]
    }
 }
-
-export async function addFood_API(data: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
+export async function acceptGroup_API(id: string): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.post('/foods', data))
+         await axiosInstance.put(`/groups/${id}/accept`))
       return [response.data, null]
    } catch (error) {
       return [null, error as Error]
    }
 }
-export async function addAdminFood_API(data: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
+export async function addGroup_API(data: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.post('/admins/food', data))
-      return [response.data, null]
-   } catch (error) {
-      return [null, error as Error]
-   }
-}
-
-export async function adminVerify_API(id: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
-   try {
-      const response = <AxiosResponse<BaseResponse<any>>>(
-         await axiosInstance.put('/admins/food/verify/' + id))
+         await axiosInstance.post('/groups', data))
       return [response.data, null]
    } catch (error) {
       return [null, error as Error]

@@ -62,7 +62,7 @@ async function handleAvatar(e: Event) {
          </div>
          <div class="flex flex-col justify-center max-w-[320px] w-full mt-10">
             <div class="relative mx-auto mb-6 ">
-               <img v-if="_item.avatar" class="w-20 h-20 rounded-full" :src="_item.avatar" alt="">
+               <img v-if="_item.avatar" class="w-20 h-20 rounded-full" :src="`http://217.18.63.130:8008/api/oqibat/v1/files/download/resource?file=${_item.avatar}`" alt="">
                <img v-else class="w-20 h-20" src="@/assets/img/user.svg" alt="">
                <img class="absolute -right-0 bottom-1" src="@/assets/img/kamera.svg" alt="">
                <input :value="_item.avatar" class="w-6 h-6 rounded-full opacity-0 absolute -right-0 bottom-1" accept="img"
@@ -73,7 +73,7 @@ async function handleAvatar(e: Event) {
                   <el-input disabled v-model="_loginStore.username" />
                </el-form-item>
                <el-form-item class="w-full" label="Tug'ilgan sana">
-                  <el-date-picker class="w-full" format="DD.MM.YYYY" value-format="YYYY-DD-MM" v-model="_item.birthDate"
+                  <el-date-picker class="w-full"  v-model="_item.birthDate"
                      type="date" placeholder="Tug'ilgan sana" />
                </el-form-item>
                <el-form-item>
