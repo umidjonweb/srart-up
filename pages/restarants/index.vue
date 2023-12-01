@@ -68,6 +68,7 @@ async function handleLike(food: any) {
                <el-tabs v-model="activeName" class="demo-tabs" @tab-change="getRestorant(activeName)">
                   <el-tab-pane label="Tasqidlangan" name="VERIFIED"></el-tab-pane>
                   <el-tab-pane label="Tasqidlanmagan" name="NOT_VERIFIED"></el-tab-pane>
+                  <el-tab-pane label="Rad etilgan" name="REJECTED"></el-tab-pane>
                </el-tabs>
                <NuxtLink :to="`/restarants/${food.id}`" class="block bg-white border border-[#ccc] rounded mb-6 relative"
                   v-for="food, ind in _items" :key="ind">

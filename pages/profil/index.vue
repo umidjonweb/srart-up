@@ -24,7 +24,7 @@ profilUser()
             <img v-if="!_item?.avatar" src="@/assets/img/user.svg" alt="">
             <img v-else  class="h-10 w-10 rounded-full"
                         :src="`http://217.18.63.130:8008/api/oqibat/v1/files/download/resource?file=${_item?.avatar}`" />
-            <h2 class="text-2xl">User</h2>
+            <h2 class="text-2xl">{{ _loginStore.role[0] }}</h2>
          </div>
          <p class="text-[#B0B0B0] mb-4">{{ _loginStore.username }}</p>
          <div @click="$router.push('/profil/update')"

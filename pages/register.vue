@@ -74,8 +74,8 @@ const submitForm = () => {
                <el-form-item label="Familiya">
                   <el-input v-model="_form.lastname" type="text" placeholder="Familiya" />
                </el-form-item>
-               <el-form-item label="password">
-                  <el-input show-password v-model="_form.password" type="password" placeholder="Password" />
+               <el-form-item label="Parol">
+                  <el-input show-password v-model="_form.password" type="password" placeholder="parol" />
                </el-form-item>
                <div class="flex justify-between items-center mt-2">
                   <p>Ro'yxatdan o'tganmisiz?</p>

@@ -51,6 +51,7 @@ async function declineGroup() {
    ElMessage.success('Rad etildi!!!')
    router.push('/profil/group')
 }
+
 async function acceptGroup() {
    const [res, err] = await acceptGroup_API(route.params.id as string)
    if (err) return

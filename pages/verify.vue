@@ -53,13 +53,16 @@ async function sendSMS() {
 timeSMS()
 
 async function sendVerify() {
-
-   const [res, error] = await register_API(_registerStore.value)
+   const [res, error] = await register_API({
+      ..._registerStore.value,
+      username: _registerStore.value.username.replaceAll(" ", "")
+   })
    if (error) {
       console.log('error: ' + error);
       ElMessage.error(error.message)
+      return
    }
-   return
+   timeSMS()
 }
 
 </script>

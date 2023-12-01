@@ -63,8 +63,8 @@ const submitForm = () => {
                   <el-input v-maska data-maska="+998 ## ### ## ##" v-model="_form.username" type="text"
                      placeholder="998 ## ### ## ##" />
                </el-form-item>
-               <el-form-item prop="password" label="password">
-                  <el-input show-password v-model="_form.password" type="password" placeholder="Password" />
+               <el-form-item prop="password" label="Parol">
+                  <el-input show-password v-model="_form.password" type="password" placeholder="Parol" />
                </el-form-item>
                <div class="flex justify-between items-center">
                   <router-link class="text-indigo-light w-full text-xs" to="/register">Ro'yxatdan o'tish</router-link>

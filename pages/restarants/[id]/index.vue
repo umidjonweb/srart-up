@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { _loginStore } from "@/services/login"
-import { singleRestorant_API, updateRate_API, commentRestarant_API, verifyRestorant_API } from '@/services/restorant';
+import { singleRestorant_API, updateRate_API, commentRestarant_API, verifyRestorant_API, rejectRestorant_API } from '@/services/restorant';
 const _item = ref()
 const dialogVisible = ref(false)
 
@@ -24,6 +24,12 @@ async function resolveRestorant() {
 
    if (err) return
    ElMessage.success('Tasdiqlandi!!!')
+}
+async function rejectRestorant() {
+   const [res, err] = await rejectRestorant_API(route.params.id)
+
+   if (err) return
+   ElMessage.success('Rad etildi!!!')
 }
 async function addRate() {
    commentRestarant_API(route.params.id, _cost.value)
@@ -61,7 +67,11 @@ singleRestorant()
                </div>
                <el-button v-if="_loginStore?.role[0] == 'ADMIN'" class="!py-0 !rounded-xl !pb-[1px] text-xs !h-7 mt-2"
                   @click="resolveRestorant" type="info">
-                  Restarantni tasdiqlash
+                  Tasdiqlash
+               </el-button>
+               <el-button v-if="_loginStore?.role[0] == 'ADMIN'" class="!py-0 !rounded-xl !pb-[1px] text-xs !h-7 mt-2"
+                  @click="rejectRestorant" type="danger">
+                  Rad etish
                </el-button>
                <el-button v-else @click="dialogVisible = true" class="!py-0 !rounded-xl !pb-[1px] text-xs !h-7 mt-2"
                   type="primary">Restarantni

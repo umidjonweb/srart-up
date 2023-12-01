@@ -14,6 +14,7 @@ export async function getGroup_API(data: any): Promise<[BaseResponse<any>, null]
       return [null, error as Error]
    }
 }
+
 export async function getGroupOffer_API(data: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(

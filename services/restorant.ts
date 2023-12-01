@@ -85,6 +85,15 @@ export async function verifyRestorant_API(id: any): Promise<[BaseResponse<any>, 
       return [null, error as Error]
    }
 }
+export async function rejectRestorant_API(id: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
+   try {
+      const response = <AxiosResponse<BaseResponse<any>>>(
+         await axiosInstance.put('/admins/restaurant/reject/' + id,))
+      return [response.data, null]
+   } catch (error) {
+      return [null, error as Error]
+   }
+}
 export async function updateRate_API(id: any, data: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
    try {
       const response = <AxiosResponse<BaseResponse<any>>>(

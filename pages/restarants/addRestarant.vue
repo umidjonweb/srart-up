@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { addRestorant_API } from "@/services/restorant"
+import { addRestorant_API, addAdminRestorant_API } from "@/services/restorant"
 import { getFood_API } from "@/services/food"
 import { ref } from 'vue'
 import { Delete, Download, Plus, ZoomIn } from '@element-plus/icons-vue'
 import { uploadFile_API } from "@/services/file"
 import type { UploadFile } from 'element-plus'
+import { _loginStore } from "@/services/login"
 const router = useRouter()
 
 const _optionsFood = ref<any>([])
@@ -40,6 +41,23 @@ async function addRestorant() {
    _item.value.phoneNumber = _item.value.phoneNumber?.replaceAll(" ", "")
 
    const [res, err] = await addRestorant_API(_item.value)
+   console.log(res);
+
+   if (err) return
+   ElMessage.success("Restarant qo'shildi")
+   router.push('/restarants')
+   //    } else {
+   //       return false
+   //    }
+   // })
+}
+async function addAdminRestorant() {
+   // if (!formRef.value) return
+   // formRef.value.validate(async (valid) => {
+   // if (valid) {
+   _item.value.phoneNumber = _item.value.phoneNumber?.replaceAll(" ", "")
+
+   const [res, err] = await addAdminRestorant_API(_item.value)
    console.log(res);
 
    if (err) return
@@ -133,7 +151,7 @@ async function handleFile(file: UploadFile) {
                </el-dialog>
             </div>
             <el-form-item>
-               <el-button type="primary" @click="addRestorant" class="w-full mt-6 mb-2">Restarant qo'shish</el-button>
+               <el-button type="primary" @click="!_loginStore.role?.includes('ADMIN') ? addRestorant() : addAdminRestorant()" class="w-full mt-6 mb-2">Restarant qo'shish</el-button>
             </el-form-item>
          </el-form>
       </div>

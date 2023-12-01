@@ -2,7 +2,7 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { Search } from '@element-plus/icons-vue'
-import { searchFood_API, getFood_API, addFood_API, getAdminFood_API, adminVerify_API } from "@/services/food"
+import { searchFood_API, getFood_API, addFood_API, getAdminFood_API, adminVerify_API, adminReject_API } from "@/services/food"
 import { _loginStore } from '@/services/login';
 const _items = ref<any>([])
 const _search = ref<any>('')
@@ -28,7 +28,15 @@ async function getFood(item: string = 'VERIFIED') {
    _items.value = res.content
 }
 async function adminVerify(id) {
-   const [res, err] =  await adminVerify_API(id)
+   const [res, err] = await adminVerify_API(id)
+   console.log(res);
+
+   if (err) return
+   ElMessage.success('Ovqat tasqidlandi!!!')
+   getFood("NOT_VERIFIED")
+}
+async function adminReject(id) {
+   const [res, err] = await adminReject_API(id)
    console.log(res);
 
    if (err) return
@@ -60,6 +68,7 @@ getFood()
          <el-tabs v-model="activeName" class="demo-tabs" @tab-change="getFood(activeName)">
             <el-tab-pane label="Tasqidlangan" name="VERIFIED"></el-tab-pane>
             <el-tab-pane label="Tasqidlanmagan" name="NOT_VERIFIED"></el-tab-pane>
+            <el-tab-pane label="Rad etilgan" name="REJECTED"></el-tab-pane>
          </el-tabs>
          <div>
             <el-form class="flex items-end justify-between gap-3" label-position="top">
@@ -78,9 +87,9 @@ getFood()
                         :src="`http://217.18.63.130:8008/api/oqibat/v1/files/download/resource?file=${food?.images[0]}`" />
                   </div>
                   <p class="p-2 font-inter-500">{{ food.name }}</p>
-                  <div class="flex gap-2 p-2">
+                  <div v-if="_loginStore.role[0] == 'ADMIN' && activeName == 'NOT_VERIFIED'" class="flex gap-2 p-2">
                      <el-button @click="adminVerify(food.id)" size="small" type="primary">Tasdiqlash</el-button>
-                     <el-button @click="adminVerify(food.id)" size="small" type="danger">Rad etish</el-button>
+                     <el-button @click="adminReject(food.id)" size="small" type="danger">Rad etish</el-button>
                   </div>
                </div>
             </div>

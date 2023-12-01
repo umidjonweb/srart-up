@@ -79,3 +79,12 @@ export async function adminVerify_API(id: any): Promise<[BaseResponse<any>, null
       return [null, error as Error]
    }
 }
+export async function adminReject_API(id: any): Promise<[BaseResponse<any>, null] | [null, Error]> {
+   try {
+      const response = <AxiosResponse<BaseResponse<any>>>(
+         await axiosInstance.put('/admins/food/reject/' + id))
+      return [response.data, null]
+   } catch (error) {
+      return [null, error as Error]
+   }
+}
