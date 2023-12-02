@@ -37,6 +37,12 @@ const _links = computed(() => {
    }
    else {
       return [
+        {
+            "to": "/categories",
+            "title": "Kalalog",
+            "img": resolveComponent("IconCategory"),
+            "activeClass": "categories"
+         },
          {
             "to": "/restarants",
             "title": "Restarantlar",

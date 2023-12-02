@@ -36,7 +36,12 @@ const submitForm = () => {
          ElMessage.success("Muvofaqiyatli kirdingiz!!!")
          let decode = await parseJwt(res.token)
          _loginStore.value = { ...res, role: decode.roles }
-         router.push('/home/family')
+         if (_loginStore.value.role[0] == "USER") {
+            router.push('/home/family/foods')
+         }
+         else {
+            router.push('/categories')
+         }
       } else {
          console.log('error submit!')
          return false

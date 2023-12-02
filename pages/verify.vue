@@ -46,7 +46,7 @@ async function sendSMS() {
          _loginStore.value = { ...res, role: decode.roles }
          _isSMS.value = false
          ElMessage.success("Ro'yxatdan o'tdingiz!!!")
-         router.push('/home')
+         router.push('/home/family/foods')
       }
    })
 }
